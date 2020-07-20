@@ -1,0 +1,19 @@
+apiVersion: eksctl.io/v1alpha5
+kind: ClusterConfig
+
+metadata:
+  name: eks-ningfeng-cluster
+  region: us-east-1
+
+nodeGroups:
+  - name: ng-1
+    instanceType: t2.micro
+    desiredCapacity: 1
+
+fargateProfiles:
+  - name: default
+    selectors:
+      - namespace: default
+  - name: kube-system
+    selectors:
+      - namespace: kube-system
